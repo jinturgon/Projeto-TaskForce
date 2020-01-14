@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="include/favicon.png" type="image/x-icon"/>
+  <title>..::Task Force::..</title>
+
+
+      	<link rel="stylesheet" href="include/css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      	<script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+        <!--
+		<script src="include/js/jquery.min.js"></script>
+        <script src="include/js/jquery.inputmask.bundle.js"></script>
+        -->
+
+
+<script>
+$(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+	if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+	  var target = $(this.hash);
+	  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+	  if (target.length) {
+		$('html, body').animate({
+		  scrollTop: target.offset().top
+		}, 1000);
+		return false;
+	  }
+	}
+  });
+});
+</script>
+
+
+<script>
+$(document).ready(function() {
+  $("#fone").inputmask({
+	mask: ["(99) 9999-9999", "(99) 99999-9999", ],
+	keepStatic: true
+  });
+});
+</script>
+
+
+<script>
+function validate(evt) {
+var theEvent = evt || window.event;
+var key = theEvent.keyCode || theEvent.which;
+key = String.fromCharCode( key );
+var regex = /[0-9]|\./;
+  if( !regex.test(key) ) {
+	theEvent.returnValue = false;
+	if(theEvent.preventDefault) theEvent.preventDefault();
+  }
+}
+</script>
+
+
+<!-- Corrigir layout thrashing -->
+<script>
+// Read
+var h1 = element1.clientHeight;
+// Write
+requestAnimationFrame(function() {
+  element1.style.height = (h1 * 2) + 'px';
+});
+// Read
+var h2 = element2.clientHeight;
+// Write
+requestAnimationFrame(function() {
+  element2.style.height = (h2 * 2) + 'px';
+});
+</script>
+<!-- END layout thrashing -->
+
+<script>
+function SubmitFormData() {
+    var nome = $("#nome").val();
+	var email = $("#email").val();
+    var fone = $("#fone").val();
+    var msg = $("#msg").val();
+    $.post("include/php/faleconosco.php", { nome: nome, email: email, fone: fone, msg: msg },
+    function(data) {
+	 $("#results").show();
+	 $('#results').html(data);
+	 $('#myForm')[0].reset();
+    });
+}
+</script>
+<script>
+  $(function() {
+    $('.error').hide();
+	$('#results').hide();
+    $("#button-blue").click(function() {
+      // validate and process form here
+      $('.error').hide();
+	  $('#results').hide();
+  	  var name = $("input#nome").val();
+  		if (name == "") {
+        $("label#nome_error").show();
+        $("input#nome").focus();
+        return false;
+      }
+  		var email = $("input#email").val();
+  		if (email == "") {
+        $("label#email_error").show();
+        $("input#email").focus();
+        return false;
+      }
+  		var phone = $("input#fone").val();
+  		if (phone == "") {
+        $("label#fone_error").show();
+        $("input#fone").focus();
+        return false;
+      }
+	    var msg = $("textarea#msg").val();
+  		if (msg == "") {
+        $("label#msg_error").show();
+        $("textarea#msg").focus();
+        return false;
+      }
+      SubmitFormData();
+    });
+  });
+</script>
+
+</head>
+<body>
+
+  <section class="vh100" id="home">
+    <header>
+      <a href="#home" class="logo">MeuSite</a>
+      <nav>
+        <ul class="link-effect">
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#areas">Áreas de Atuação</a></li>
+          <li><a href="#curiosidades">Curiosidades</a></li>
+          <li><a href="#port">Portifólio</a></li>
+          <li><a href="#contato-info">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+  
+    <h1>Technology</h1>
+  
+    <img src="include/teamicon.png" style="cursor:pointer">
+  
+    <div class="overlay"></div>
+</section>
+<section class="vh100" id="sobre">
+
+
+  <h1 class='mainTitle'><span class="orange">&lt;</span> Sobre <span class="orange">&gt;</span></h1>
+  
+<div class="sobre-content">
+    <ul><li>Nosso Logotipo foi criado em relação ao nome da nossa empresa, onde colocamos uma águia na qual ela simboliza coragem e força, e isso mostra bastante da nossa empresa, pois temos o compromisso de fazer com que empresas tenham uma melhor divulgação gráfica de seus produtos.</li>
+    <li>Nossa Logomarca relata bem o empenho e o compromisso na qual nossa empresa tem para com aqueles que procuram nos contratar, onde procuramos de todas as formas montar estratégias de designer para que aquela empresa possa crescer.</li>
+    <li>Nossa empresa tem como objetivo prestar serviços em modo geral na área de TI, tendo como tese(foco principal) a parte gráfica, sendo dessa forma a parte de divulgação ou aprimoramento de outras empresas na qual necessitam de um site ou de um marketing em cima da sua empresa, isso para aumentar a planilha de clientes aumentando consequentemente o lucro, já que uma vez a empresa terá mais recursos para trabalhar.</li>
+      <li>A Task Force tem como missão, dar um upgrade no resultado de nossos clientes, fornecendo de maneira gradativa, as melhores soluções técnicas.</li>
+	 <li>  A Task Force tem como visão, ser a primeira opção de procura no nosso ramo, permanecendo como uma equipe de trabalho qualificada, empenhada e prestigiada, com rentabilidade que garanta o cumprimento e o crescimento do papel social da empresa.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="vh100">
+  <blockquote cite="JohnGreen">
+      <h1>"The ones who are crazy enough to think that they can change the world, are the ones who do."</h1>
+      <p>Steve Jobs</p>
+  </blockquote>
+  <div class="overlay"></div>
+</section>
+
+<section class="vh100" id="areas">
+  <h1 class='mainTitle'><span class="orange">&lt;</span> Áreas de Atuação <span class="orange">&gt;</span></h1>
+  
+  <div class="areas-content">
+    <ul>
+      <li>
+        <img src="include/imgs/areas/arte-grafica.png" alt="">
+        <h2>Arte Digital</h2>
+        <p>Arte digital ou arte de computador é aquela que se produz no ambiente gráfico computacional. Tem por objetivo criar obras de arte multimídia por intermédio de software e hardware, em um espaço virtual.</p>
+      </li>
+      <li>
+        <img src="include/imgs/areas/programacao.png" alt="">
+        <h2>Programação</h2>
+        <p>Programação é o processo de escrita, teste e manutenção de um programa de computador. O programa é escrito em uma linguagem de programação, embora seja possível, com alguma dificuldade, escrevê-lo diretamente em linguagem de máquina.</p>
+      </li>
+      <li>
+        <img src="include/imgs/areas/multiple-devices.png" alt="">
+        <h2>Multiple Devices</h2>
+        <p>Programação envolvendo a utilização de serviços em multiplos dispositivos.</p>
+      </li>
+      
+      <li>
+        <img src="include/imgs/areas/uxui.png" alt="">
+        <h2>UX/UI</h2>
+        <p>O UI Design trabalha pelo meio no qual uma pessoa interage e controla um software ou aplicativo. O UX Design trabalha com as emoções e experiências dos usuários, como facilidade de uso, eficiência e utilidade.
+</p>
+      </li>
+      <li>
+        <img src="include/imgs/areas/branding.png" alt="">
+        <h2>Branding</h2>
+        <p>Branding pode ser definido como o ato de administrar a imagem/marca (BRAND) de uma empresa.</p>
+      </li>
+      <li>
+        <img src="include/imgs/areas/analytics.png" alt="">
+        <h2>Analytics</h2>
+        <p>O Analytics permite que você avalie seu ROI de publicidade, bem como acompanhar seus sites e aplicativos em Flash, vídeo e redes sociais.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+
+<section class="vh100">
+  <blockquote cite="JohnGreen">
+      <h1>"Most good programmers do programming not because they expect to get paid or get adulation by the public, but because it is fun to program."</h1>
+      <p>Linus Torvalds</p>
+  </blockquote>
+  <div class="overlay"></div>
+</section>
+
+<section class="vh100" id="curiosidades">
+  <h1 class='mainTitle'><span class="orange">&lt;</span> Curiosidades <span class="orange">&gt;</span></h1>
+  
+  <div class="curiosidades-content">
+    <ul>
+<li><b>A importância da informação para a gestão de TI</b></li>
+<li>
+Em 2015, termos como Big Data, Internet das Coisas e aprendizado de máquina tomaram conta do debate sobre tecnologia corporativa. E, nesse meio tempo, gestores de TI ganharam acesso a ferramentas que permitem a análise rápida de dados obtidos em computadores, telefones e sites de internet. Assim, especialistas em TI podem, hoje, traçar o perfil de consumidores, entender melhor o funcionamento de grandes complexos industriais e melhorar estratégias comerciais com o uso de sistemas digitais complexos em apenas alguns segundos, transformando a informação no ativo mais precioso das empresas.
+</li>
+<li>
+<b>O início de carreira inusitado de uma das diretoras da Google</b>
+</li>
+<li>
+Diane Greene, ex-CEO da VMware e membro do conselho-diretor da Google, começou sua carreira como catadora de carangueiros! Mestre em Arquitetura Naval e Ciência da Computação, a investidora americana possui uma longa ligação com o mar, inclusive já tendo vencido o National Double-Handed Dinghy, velejando nos Estados Unidos, e outros campeonatos na divisão feminina do torneio San Francisco Classic, de windsurf!
+</li>
+    </ul>
+  </div>
+</section>
+
+<section class="vh100">
+  <blockquote cite="JohnGreen">
+      <h1>"I basically wrote the code, specs and documentation for how the client and server talked to each other."</h1>
+      <p>Tim Berners-Lee</p>
+  </blockquote>
+  <div class="overlay"></div>
+</section>
+
+<section class="vh100" id="port">
+  <h1 class='mainTitle'><span class="orange" >&lt;</span> Portifólio <span class="orange">&gt;</span></h1>
+  <div class="portifolio-content">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</section>
+
+
+
+<footer>
+  <br>
+  <p>Todos os direitos reservados - 2016</p>
+  
+  <ul>
+    <li>
+      <a href="#">
+        <img src="include/imgs/share/facebook.png"/>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="include/imgs/share/instagram.png"/>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="include/imgs/share/twitter.png"/>
+      </a>
+    </li>
+  </ul>
+</footer>
+ 
+</body>
+</html>
